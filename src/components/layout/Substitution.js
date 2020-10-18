@@ -15,39 +15,33 @@ class Caesar extends Component {
     temp = temp.replace(/,/g, "");
     temp = temp.replace(/\?/g, "");
     temp = temp.toLowerCase();
-    this.setState({ text: temp, result:"" });
+    this.setState({ text: temp, result: "" });
   };
   setKey = (e) => {
     console.log(e.target.value);
-    this.setState({ key: e.target.value.toLowerCase() , result:""});
+    this.setState({ key: e.target.value.toLowerCase(), result: "" });
   };
   encrypt = (e) => {
     e.preventDefault();
     mp.clear();
-    for(var i=0;i<26;i++)
-    {
-        mp.set(String.fromCharCode(i+97),this.state.key.charAt(i));
+    for (var i = 0; i < 26; i++) {
+      mp.set(String.fromCharCode(i + 97), this.state.key.charAt(i));
     }
-    var str="";
-    for(var i=0;i<this.state.text.length;i++)
-    {
-
-        str += mp.get(this.state.text.charAt(i));
+    var str = "";
+    for (var i = 0; i < this.state.text.length; i++) {
+      str += mp.get(this.state.text.charAt(i));
     }
     this.setState({ result: str });
   };
   decrypt = (e) => {
-     e.preventDefault();
+    e.preventDefault();
     mp.clear();
-    for(var i=0;i<26;i++)
-    {
-        mp.set(this.state.key.charAt(i),String.fromCharCode(i+97));
+    for (var i = 0; i < 26; i++) {
+      mp.set(this.state.key.charAt(i), String.fromCharCode(i + 97));
     }
-    var str="";
-    for(var i=0;i<this.state.text.length;i++)
-    {
-
-        str += mp.get(this.state.text.charAt(i));
+    var str = "";
+    for (var i = 0; i < this.state.text.length; i++) {
+      str += mp.get(this.state.text.charAt(i));
     }
     this.setState({ result: str });
   };

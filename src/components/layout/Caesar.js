@@ -14,11 +14,11 @@ class Caesar extends Component {
     temp = temp.replace(/,/g, "");
     temp = temp.replace(/\?/g, "");
     temp = temp.toLowerCase();
-    this.setState({ text: temp , result:""});
+    this.setState({ text: temp, result: "" });
   };
   setKey = (e) => {
     var x = parseInt(e.target.value);
-    this.setState({ key: x ,result:""});
+    this.setState({ key: x, result: "" });
   };
   encrypt = (e) => {
     e.preventDefault();
@@ -45,6 +45,10 @@ class Caesar extends Component {
     return (
       <div>
         <Container>
+          <p>
+            In Caesar Cipher,each letter in the plaintext is replaced by a
+            letter some fixed number of positions down the alphabet
+          </p>
           <Form>
             <Form.Group>
               <Form.Label>Enter Plain Text/ Cipher Text</Form.Label>

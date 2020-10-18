@@ -1,17 +1,41 @@
 import React, { Component } from "react";
-import { Container } from "react-bootstrap";
-import Caesar from '../layout/Caesar'
+import { Container,Tabs,Tab } from "react-bootstrap";
+import Caesar from "../layout/Caesar";
 class Home extends Component {
-    
+  state = {
+    key : 'Caesar'
+  };
+  setKey = (K) =>{
+    this.setState({key:K})
+  }
   render() {
+    
     return (
       <Container>
-        <br/>
+        <br />
         <h1>Dcoder</h1>
         <h3>A tool for Cryptography</h3>
-        <p> Dcoder, as the name suggests, decodes or encodes all popular encodings.</p>
-          <Caesar/>
-
+        <p>
+          {" "}
+          Dcoder, as the name suggests, decodes or encodes all popular
+          encodings.
+        </p>
+        <Tabs
+          id="controlled-tab-example"
+          activeKey={this.state.key}
+          onSelect={(k) => this.setKey(k)}
+        >
+          <Tab eventKey="Caesar" title="Caesar">
+            <Caesar />
+          </Tab>
+          <Tab eventKey="Affine" title="Affine">
+          
+          </Tab>
+          <Tab eventKey="Substituion" title="Substituion" >
+          
+          </Tab>
+        </Tabs>
+        
       </Container>
     );
   }

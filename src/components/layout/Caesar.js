@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, ButtonGroup } from "react-bootstrap";
 class Caesar extends Component {
   state = {
     text: "",
@@ -46,12 +46,14 @@ class Caesar extends Component {
               <Form.Label>Enter Key </Form.Label>
               <Form.Control type="text" onChange={this.setKey} />
             </Form.Group>
+            <ButtonGroup>
             <Button type="submit" onClick={this.encrypt}>
               Encrypt
             </Button>
             <Button type="submit" onClick={this.decrypt}>
               Decrypt
             </Button>
+            </ButtonGroup>
           </Form>
           <p>{this.state.result}</p>
         </Container>

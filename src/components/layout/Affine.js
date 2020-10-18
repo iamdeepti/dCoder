@@ -23,6 +23,7 @@ class Caesar extends Component {
   };
 
   setText = (e) => {
+    this.setState({ result: "" });
     var temp = e.target.value;
     temp = temp.replace(/ /g, "");
     temp = temp.replace(/'/g, "");
@@ -37,12 +38,16 @@ class Caesar extends Component {
     this.setState({ a: x });
   };
   setKey2 = (e) => {
+    this.setState({ result: "" });
+
     var x = parseInt(e.target.value);
     this.setState({ b: x });
   };
 
   encrypt = (e) => {
     e.preventDefault();
+    this.setState({ result: "" });
+
     var a = this.state.a,
       b = this.state.b;
 
@@ -57,6 +62,7 @@ class Caesar extends Component {
   };
   decrypt = (e) => {
     e.preventDefault();
+    this.setState({ result: "" });
     var a = this.state.a,
       b = this.state.b;
     var temp,

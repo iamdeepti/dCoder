@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Container,Tabs,Tab } from "react-bootstrap";
+import { Container, Tabs, Tab } from "react-bootstrap";
 import Caesar from "../layout/Caesar";
+import Affine from "../layout/Affine";
+
 class Home extends Component {
   state = {
-    key : 'Caesar'
+    key: "Caesar",
   };
-  setKey = (K) =>{
-    this.setState({key:K})
-  }
+  setKey = (K) => {
+    this.setState({ key: K });
+  };
   render() {
-    
     return (
       <Container>
         <br />
@@ -29,13 +30,10 @@ class Home extends Component {
             <Caesar />
           </Tab>
           <Tab eventKey="Affine" title="Affine">
-          
+            <Affine />
           </Tab>
-          <Tab eventKey="Substituion" title="Substituion" >
-          
-          </Tab>
+          <Tab eventKey="Substituion" title="Substituion"></Tab>
         </Tabs>
-        
       </Container>
     );
   }

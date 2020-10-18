@@ -14,10 +14,9 @@ class Home extends Component {
     return (
       <Container>
         <br />
-        <h1>Dcoder</h1>
+        <h1>dCoder</h1>
         <h3>A tool for Cryptography</h3>
         <p>
-          {" "}
           Dcoder, as the name suggests, decodes or encodes all popular
           encodings.
         </p>

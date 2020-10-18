@@ -7,9 +7,14 @@ class Caesar extends Component {
     result: "",
   };
   setText = (e) => {
-    var temp = e.target.value.toLowerCase();
-    temp.replace(" ","");
-    this.setState({ text:  temp});
+    var temp = e.target.value;
+    temp = temp.replace(/ /g, "");
+    temp = temp.replace(/'/g, "");
+    temp = temp.replace(/\./g, "");
+    temp = temp.replace(/,/g, "");
+    temp = temp.replace(/\?/g, "");
+    temp = temp.toLowerCase();
+    this.setState({ text: temp });
   };
   setKey = (e) => {
     var x = parseInt(e.target.value);
@@ -17,19 +22,22 @@ class Caesar extends Component {
   };
   encrypt = (e) => {
     e.preventDefault();
-    var temp, str="";
+    var temp,
+      str = "";
     for (var i = 0; i < this.state.text.length; i++) {
-        temp = (this.state.text.charCodeAt(i)-97+this.state.key)%26+97;
-        str += String.fromCharCode(temp);
+      temp = ((this.state.text.charCodeAt(i) - 97 + this.state.key) % 26) + 97;
+      str += String.fromCharCode(temp);
     }
     this.setState({ result: str });
   };
   decrypt = (e) => {
     e.preventDefault();
-    var temp, str="";
+    var temp,
+      str = "";
     for (var i = 0; i < this.state.text.length; i++) {
-        temp = (this.state.text.charCodeAt(i)-97-this.state.key)%26+97;
-        str += String.fromCharCode(temp);
+      temp =
+        ((this.state.text.charCodeAt(i) - 97 - this.state.key + 26) % 26) + 97;
+      str += String.fromCharCode(temp);
     }
     this.setState({ result: str });
   };
@@ -47,12 +55,12 @@ class Caesar extends Component {
               <Form.Control type="text" onChange={this.setKey} />
             </Form.Group>
             <ButtonGroup>
-            <Button type="submit" onClick={this.encrypt}>
-              Encrypt
-            </Button>
-            <Button type="submit" onClick={this.decrypt}>
-              Decrypt
-            </Button>
+              <Button type="submit" onClick={this.encrypt}>
+                Encrypt
+              </Button>
+              <Button type="submit" onClick={this.decrypt}>
+                Decrypt
+              </Button>
             </ButtonGroup>
           </Form>
           <p>{this.state.result}</p>

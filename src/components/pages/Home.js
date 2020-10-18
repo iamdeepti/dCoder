@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Tabs, Tab } from "react-bootstrap";
 import Caesar from "../layout/Caesar";
 import Affine from "../layout/Affine";
-
+import Substitution from "../layout/Substitution";
 class Home extends Component {
   state = {
     key: "Caesar",
@@ -32,7 +32,9 @@ class Home extends Component {
           <Tab eventKey="Affine" title="Affine">
             <Affine />
           </Tab>
-          <Tab eventKey="Substituion" title="Substituion"></Tab>
+          <Tab eventKey="Substituion" title="Substituion">
+            <Substitution />
+          </Tab>
         </Tabs>
       </Container>
     );

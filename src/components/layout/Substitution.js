@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Container, Form, Button, ButtonGroup } from "react-bootstrap";
+var mp = new Map();
 class Caesar extends Component {
   state = {
     text: "",
-    key: null,
+    key: "",
     result: "",
   };
   setText = (e) => {
@@ -14,30 +15,39 @@ class Caesar extends Component {
     temp = temp.replace(/,/g, "");
     temp = temp.replace(/\?/g, "");
     temp = temp.toLowerCase();
-    this.setState({ text: temp , result:""});
+    this.setState({ text: temp, result:"" });
   };
   setKey = (e) => {
-    var x = parseInt(e.target.value);
-    this.setState({ key: x ,result:""});
+    console.log(e.target.value);
+    this.setState({ key: e.target.value.toLowerCase() , result:""});
   };
   encrypt = (e) => {
     e.preventDefault();
-    var temp,
-      str = "";
-    for (var i = 0; i < this.state.text.length; i++) {
-      temp = ((this.state.text.charCodeAt(i) - 97 + this.state.key) % 26) + 97;
-      str += String.fromCharCode(temp);
+    mp.clear();
+    for(var i=0;i<26;i++)
+    {
+        mp.set(String.fromCharCode(i+97),this.state.key.charAt(i));
+    }
+    var str="";
+    for(var i=0;i<this.state.text.length;i++)
+    {
+
+        str += mp.get(this.state.text.charAt(i));
     }
     this.setState({ result: str });
   };
   decrypt = (e) => {
-    e.preventDefault();
-    var temp,
-      str = "";
-    for (var i = 0; i < this.state.text.length; i++) {
-      temp =
-        ((this.state.text.charCodeAt(i) - 97 - this.state.key + 26) % 26) + 97;
-      str += String.fromCharCode(temp);
+     e.preventDefault();
+    mp.clear();
+    for(var i=0;i<26;i++)
+    {
+        mp.set(this.state.key.charAt(i),String.fromCharCode(i+97));
+    }
+    var str="";
+    for(var i=0;i<this.state.text.length;i++)
+    {
+
+        str += mp.get(this.state.text.charAt(i));
     }
     this.setState({ result: str });
   };
@@ -45,6 +55,11 @@ class Caesar extends Component {
     return (
       <div>
         <Container>
+          <p>
+            It is an improvement to the Caesar Cipher. Instead of shifting the
+            alphabets by some number, this scheme uses some permutation of the
+            letters in alphabet.
+          </p>
           <Form>
             <Form.Group>
               <Form.Label>Enter Plain Text/ Cipher Text</Form.Label>

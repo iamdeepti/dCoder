@@ -28,7 +28,7 @@ class Caesar extends Component {
       mp.set(String.fromCharCode(i + 97), this.state.key.charAt(i));
     }
     var str = "";
-    for (var i = 0; i < this.state.text.length; i++) {
+    for (i = 0; i < this.state.text.length; i++) {
       str += mp.get(this.state.text.charAt(i));
     }
     this.setState({ result: str });
@@ -40,7 +40,7 @@ class Caesar extends Component {
       mp.set(this.state.key.charAt(i), String.fromCharCode(i + 97));
     }
     var str = "";
-    for (var i = 0; i < this.state.text.length; i++) {
+    for (i = 0; i < this.state.text.length; i++) {
       str += mp.get(this.state.text.charAt(i));
     }
     this.setState({ result: str });

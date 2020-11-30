@@ -3,6 +3,7 @@ import { Container, Tabs, Tab } from "react-bootstrap";
 import Caesar from "../layout/Caesar";
 import Affine from "../layout/Affine";
 import Substitution from "../layout/Substitution";
+import FreqAnalysis from "../layout/FreqAnalysis";
 class Home extends Component {
   state = {
     key: "Caesar",
@@ -33,6 +34,9 @@ class Home extends Component {
           </Tab>
           <Tab eventKey="Substituion" title="Substituion">
             <Substitution />
+          </Tab>
+          <Tab eventKey="FreqAnalysis" title="Frequency Analysis">
+            <FreqAnalysis />
           </Tab>
         </Tabs>
       </Container>
